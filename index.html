@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="बीरभूमि बुलेटिन - सच • निष्पक्ष • बेबाक">
+  <title>बीरभूमि बुलेटिन | Coming Soon</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800;900&display=swap');
+
+    :root{
+      --navy:#071b49;
+      --blue:#123f96;
+      --red:#e51d25;
+      --gold:#f4bd20;
+      --white:#fff;
+      --light:#f5f8ff;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      min-height:100vh;
+      font-family:'Noto Sans Devanagari',Arial,sans-serif;
+      color:var(--navy);
+      background:#071b49;
+      overflow-x:hidden;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .page{
+      min-height:100vh;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 18%,rgba(255,255,255,.98) 0 14%,rgba(217,233,255,.92) 35%,rgba(108,160,224,.45) 62%,rgba(7,27,73,.98) 100%);
+    }
+
+    /* Decorative mountain layers */
+    .mountains{
+      position:absolute;
+      inset:0 0 auto;
+      height:58vh;
+      min-height:430px;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+
+    .mountain{
+      position:absolute;
+      bottom:-2px;
+      width:0;height:0;
+      border-left:18vw solid transparent;
+      border-right:18vw solid transparent;
+      border-bottom:32vh solid rgba(20,72,145,.48);
+      filter:drop-shadow(0 10px 20px rgba(7,27,73,.12));
+    }
+
+    .m1{left:-8vw}
+    .m2{left:12vw;border-left-width:22vw;border-right-width:22vw;border-bottom:38vh solid rgba(31,89,167,.38)}
+    .m3{left:40vw;border-left-width:25vw;border-right-width:25vw;border-bottom:43vh solid rgba(19,68,137,.45)}
+    .m4{right:-12vw;border-left-width:23vw;border-right-width:23vw;border-bottom:35vh solid rgba(38,98,174,.35)}
+
+    .snow{
+      position:absolute;
+      bottom:26vh;
+      left:50%;
+      width:0;height:0;
+      transform:translateX(-50%);
+      border-left:8vw solid transparent;
+      border-right:8vw solid transparent;
+      border-bottom:15vh solid rgba(255,255,255,.88);
+      filter:blur(.3px);
+    }
+
+    /* Main content */
+    .content{
+      position:relative;
+      z-index:2;
+      width:min(1180px,92%);
+      margin:0 auto;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      padding:38px 0 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:25px;
+      width:100%;
+      animation:fadeDown .8s ease both;
+    }
+
+    .logo{
+      width:150px;
+      height:150px;
+      object-fit:contain;
+      border-radius:50%;
+      filter:drop-shadow(0 10px 18px rgba(0,0,0,.25));
+      flex:none;
+    }
+
+    .brand-text{text-align:left}
+
+    .brand-name{
+      font-size:clamp(2rem,5vw,4.4rem);
+      line-height:1;
+      font-weight:900;
+      color:var(--navy);
+      letter-spacing:-1px;
+    }
+
+    .brand-tagline{
+      margin-top:13px;
+      font-size:clamp(1rem,2vw,1.45rem);
+      font-weight:800;
+      letter-spacing:3px;
+    }
+
+    .brand-tagline span{color:var(--red);padding:0 9px}
+
+    .hero{
+      margin-top:52px;
+      width:min(920px,100%);
+      animation:fadeUp .9s ease .1s both;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      background:var(--red);
+      color:#fff;
+      padding:8px 28px;
+      font-weight:800;
+      font-size:clamp(.8rem,1.5vw,1.05rem);
+      letter-spacing:2px;
+      transform:skew(-8deg);
+      box-shadow:0 8px 20px rgba(229,29,37,.2);
+    }
+
+    .hero h1{
+      margin-top:12px;
+      font-family:Arial,sans-serif;
+      font-size:clamp(3rem,8vw,7rem);
+      line-height:.9;
+      font-weight:900;
+      font-style:italic;
+      text-transform:uppercase;
+      color:var(--navy);
+      letter-spacing:-3px;
+    }
+
+    .hero h1 strong{
+      display:block;
+      color:var(--red);
+      text-shadow:0 5px 0 rgba(255,255,255,.8);
+      letter-spacing:-4px;
+    }
+
+    .gold-line{
+      width:min(680px,80%);
+      height:7px;
+      margin:18px auto 22px;
+      background:var(--gold);
+      border-radius:50%;
+      transform:rotate(-1deg);
+      box-shadow:0 3px 0 rgba(255,255,255,.7);
+    }
+
+    .intro{
+      max-width:760px;
+      margin:auto;
+      font-size:clamp(1rem,2vw,1.35rem);
+      line-height:1.7;
+      font-weight:600;
+    }
+
+    .intro b{color:var(--red)}
+
+    .trust{
+      margin:24px auto 0;
+      display:inline-flex;
+      align-items:center;
+      gap:14px;
+      background:var(--navy);
+      color:#fff;
+      border-radius:999px;
+      padding:11px 28px;
+      font-size:clamp(.95rem,1.8vw,1.25rem);
+      font-weight:800;
+    }
+
+    .trust i{
+      width:9px;height:9px;border-radius:50%;
+      background:var(--red);
+      display:block;
+    }
+
+    .actions{
+      margin:30px auto 0;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:14px;
+    }
+
+    .btn{
+      min-height:56px;
+      padding:0 28px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:11px;
+      border-radius:14px;
+      font-size:1.05rem;
+      font-weight:800;
+      transition:.2s ease;
+      box-shadow:0 9px 20px rgba(7,27,73,.14);
+    }
+
+    .btn:hover{transform:translateY(-3px)}
+
+    .facebook{background:#1877f2;color:#fff}
+    .notify{background:#fff;color:var(--navy);border:2px solid rgba(7,27,73,.15)}
+
+    .icon{
+      width:28px;height:28px;
+      border-radius:50%;
+      display:grid;place-items:center;
+      font-family:Arial,sans-serif;
+      font-weight:900;
+    }
+
+    .facebook .icon{background:#fff;color:#1877f2}
+    .notify .icon{background:var(--red);color:#fff}
+
+    .categories{
+      width:100%;
+      margin-top:auto;
+      padding:24px 0 0;
+    }
+
+    .category-row{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:0;
+      background:rgba(255,255,255,.94);
+      border-radius:20px 20px 0 0;
+      box-shadow:0 -8px 25px rgba(7,27,73,.12);
+      overflow:hidden;
+    }
+
+    .category{
+      flex:1 1 130px;
+      min-width:120px;
+      padding:17px 12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      font-size:.92rem;
+      font-weight:800;
+      border-right:1px solid #d9dfeb;
+    }
+
+    .category:last-child{border-right:0}
+    .cat-icon{color:var(--red);font-size:1.3rem}
+
+    footer{
+      width:100%;
+      background:var(--navy);
+      color:#fff;
+      padding:18px 20px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:25px;
+      font-size:.9rem;
+    }
+
+    footer span{opacity:.8}
+
+    /* Floating decorative ribbons */
+    .ribbon{
+      position:absolute;
+      bottom:105px;
+      width:40%;
+      height:70px;
+      z-index:1;
+      transform:skewY(-8deg);
+      opacity:.95;
+    }
+
+    .ribbon.left{
+      left:-7%;
+      background:linear-gradient(180deg,var(--red) 0 35%,var(--blue) 36% 70%,var(--navy) 71%);
+    }
+
+    .ribbon.right{
+      right:-7%;
+      background:linear-gradient(180deg,var(--red) 0 35%,var(--blue) 36% 70%,var(--navy) 71%);
+      transform:skewY(8deg);
+    }
+
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(24px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    @keyframes fadeDown{
+      from{opacity:0;transform:translateY(-18px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    /* Tablet */
+    @media (max-width:800px){
+      .content{padding-top:24px}
+      .brand{gap:16px}
+      .logo{width:112px;height:112px}
+      .brand-text{text-align:left}
+      .hero{margin-top:35px}
+      .hero h1{letter-spacing:-2px}
+      .hero h1 strong{letter-spacing:-2px}
+      .category{flex:1 1 25%;min-width:25%}
+      .ribbon{bottom:130px}
+    }
+
+    /* Mobile */
+    @media (max-width:560px){
+      .page{
+        background:
+          radial-gradient(circle at 50% 12%,#fff 0 15%,#dcecff 42%,#8db9e8 68%,#071b49 100%);
+      }
+
+      .mountains{height:47vh;min-height:330px}
+      .content{width:94%;padding-top:18px}
+
+      .brand{
+        flex-direction:column;
+        gap:8px;
+      }
+
+      .logo{width:115px;height:115px}
+      .brand-text{text-align:center}
+      .brand-name{font-size:2.25rem}
+      .brand-tagline{
+        font-size:.82rem;
+        letter-spacing:1.5px;
+        margin-top:8px;
+      }
+
+      .hero{margin-top:30px}
+      .eyebrow{padding:7px 18px;font-size:.72rem}
+      .hero h1{font-size:3.2rem;line-height:.95}
+      .hero h1 strong{font-size:3.55rem}
+      .gold-line{height:5px;margin:14px auto 16px}
+
+      .intro{
+        font-size:.94rem;
+        line-height:1.6;
+        padding:0 8px;
+      }
+
+      .trust{
+        font-size:.86rem;
+        padding:9px 18px;
+        gap:9px;
+      }
+
+      .actions{
+        width:100%;
+        flex-direction:column;
+        padding:0 10px;
+        margin-top:22px;
+      }
+
+      .btn{width:100%;min-height:52px;font-size:.95rem}
+
+      .categories{padding-top:20px}
+      .category-row{
+        border-radius:15px 15px 0 0;
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .category{
+        min-width:0;
+        padding:12px 6px;
+        font-size:.77rem;
+        border-bottom:1px solid #d9dfeb;
+      }
+
+      .category:nth-child(odd){border-right:1px solid #d9dfeb}
+      .category:nth-child(even){border-right:0}
+
+      footer{
+        padding:14px 10px;
+        font-size:.72rem;
+        text-align:center;
+      }
+
+      .ribbon{display:none}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none!important;transition:none!important}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="mountains" aria-hidden="true">
+      <div class="mountain m1"></div>
+      <div class="mountain m2"></div>
+      <div class="mountain m3"></div>
+      <div class="mountain m4"></div>
+      <div class="snow"></div>
+    </div>
+
+    <div class="ribbon left" aria-hidden="true"></div>
+    <div class="ribbon right" aria-hidden="true"></div>
+
+    <div class="content">
+      <header class="brand">
+        <img class="logo" src="birbhoomi-bulletin-logo.png" alt="बीरभूमि बुलेटिन Logo">
+        <div class="brand-text">
+          <div class="brand-name">बीरभूमि बुलेटिन</div>
+          <div class="brand-tagline">
+            सच <span>●</span> निष्पक्ष <span>●</span> बेबाक
+          </div>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="eyebrow">YOUR NEWS • YOUR VOICE • YOUR PLATFORM</div>
+
+        <h1>
+          Something New Is
+          <strong>Coming Soon</strong>
+        </h1>
+
+        <div class="gold-line"></div>
+
+        <p class="intro">
+          हम एक नया <b>डिजिटल न्यूज़ प्लेटफॉर्म</b> तैयार कर रहे हैं,
+          जहाँ आपको मिलेंगी ताज़ा खबरें, स्थानीय अपडेट और देश-दुनिया की
+          महत्वपूर्ण कहानियाँ।
+        </p>
+
+        <div class="trust">
+          <i></i>
+          सच • निष्पक्ष • बेबाक
+          <i></i>
+        </div>
+
+        <div class="actions">
+          <a class="btn facebook"
+             href="https://www.facebook.com/profile.php?id=61593905331947"
+             target="_blank" rel="noopener noreferrer">
+            <span class="icon">f</span>
+            Follow Us on Facebook
+          </a>
+
+          <a class="btn notify" href="mailto:info@birbhoomibulletin.com?subject=Notify me when the website launches">
+            <span class="icon">✓</span>
+            Notify Me
+          </a>
+        </div>
+      </section>
+
+      <section class="categories" aria-label="News categories">
+        <div class="category-row">
+          <div class="category"><span class="cat-icon">⚡</span> Breaking News</div>
+          <div class="category"><span class="cat-icon">●</span> Local News</div>
+          <div class="category"><span class="cat-icon">◆</span> National</div>
+          <div class="category"><span class="cat-icon">◎</span> World</div>
+          <div class="category"><span class="cat-icon">▣</span> Politics</div>
+          <div class="category"><span class="cat-icon">↗</span> Business</div>
+          <div class="category"><span class="cat-icon">★</span> Sports</div>
+        </div>
+      </section>
+
+      <footer>
+        <span>© 2026</span>
+        <strong>बीरभूमि बुलेटिन</strong>
+        <span>• All Rights Reserved •</span>
+        <span>News Beyond Borders...</span>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>
